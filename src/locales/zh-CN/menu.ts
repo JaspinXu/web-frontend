@@ -1,3 +1,11 @@
+/*
+ * @Author: JaspinXu sea.xuo@gmail.com
+ * @Date: 2024-03-17 12:21:41
+ * @LastEditors: JaspinXu sea.xuo@gmail.com
+ * @LastEditTime: 2024-03-19 16:03:45
+ * @FilePath: \web-frontend\src\locales\zh-CN\menu.ts
+ * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
+ */
 export default {
   'menu.welcome': '欢迎',
   'menu.more-blocks': '更多区块',
@@ -9,6 +17,7 @@ export default {
   'menu.base': '基础数据',
   'menu.base.department': '部门管理',
   'menu.base.departmentDetail': '部门详情',
+  'menu.base.lab': '实验室管理',
   'menu.base.charts': '图标示例',
   'menu.login': '登录',
   'menu.register': '注册',

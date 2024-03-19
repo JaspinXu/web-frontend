@@ -52,6 +52,12 @@ export default [
         component: './base/charts',
         access: 'hasPrivilege',
       },
+      {
+        path: '/base/lab',
+        name: 'lab',
+        component: './base/lab',
+        access: 'hasPrivilege',
+      },
     ],
   },
   {
