@@ -112,7 +112,7 @@ export default () => {
       fixed: 'right',
       dataIndex: 'option',
       valueType: 'option',
-      render: (_, record) => [<Link to={`detail?id=${record.id}`}>修改</Link>],
+      render: (_, record) => [<Link to={`detail?id=${record.id}`}>详情</Link>],
     },
   ];
 

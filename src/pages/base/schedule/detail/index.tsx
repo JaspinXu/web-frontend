@@ -1,9 +1,9 @@
 import { getSchedule, updateSchedule } from '@/services/api/schedule';
-
 import { PageContainer, ProForm, ProFormText, ProFormInstance } from '@ant-design/pro-components';
 import { history, useSearchParams } from '@umijs/max';
 import { message } from 'antd';
 import { useEffect, useState, useRef } from 'react';
+
 export default () => {
   const [searchParams] = useSearchParams();
   const form = useRef<ProFormInstance>(null);
