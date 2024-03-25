@@ -1,4 +1,4 @@
-import { deleteLab, listLab } from '@/services/api/lab';
+import { deleteSemester, listSemester } from '@/services/api/semester';
 import { convertPageData, orderBy, waitTime } from '@/utils/request';
 import { openConfirm } from '@/utils/ui';
 import { PlusOutlined, DeleteOutlined, ExportOutlined } from '@ant-design/icons';
@@ -13,26 +13,26 @@ export default () => {
   const refAction = useRef<ActionType>(null);
   const [selectedRowKeys, selectRow] = useState<number[]>([]);
   const [importVisible, setImportVisible] = useState(false);
-  const [lab, setLab] = useState<API.LabVO>();
-  const [searchProps, setSearchProps] = useState<API.LabQueryDTO>({});
+  const [semester, setSemester] = useState<API.SemesterVO>();
+  const [searchProps, setSearchProps] = useState<API.SemesterQueryDTO>({});
   const [visible, setVisible] = useState(false);
   const [downloading, setDownloading] = useState(false);
-  const columns: ProColumns<API.LabVO>[] = [
+  const columns: ProColumns<API.SemesterVO>[] = [
     {
-      title: '实验室ID',
+      title: '学期ID',
       dataIndex: 'id',
       width: 100,
       search: false,
     },
     {
-      title: '实验室名称',
-      dataIndex: 'labName',
+      title: '学期名',
+      dataIndex: 'semesterName',
       width: 100,
       render: (dom, record) => {
         return (
           <a
             onClick={() => {
-              setLab(record);
+              setSemester(record);
               setVisible(true);
             }}
           >
@@ -40,35 +40,6 @@ export default () => {
           </a>
         );
       },
-    },
-    {
-      title: '实验室编码',
-      dataIndex: 'labCode',
-      width: 100,
-      search: false,
-    },
-    {
-      title: '占据状态',
-      dataIndex: 'occupy',
-      width: 100,
-      search: false,
-    },
-    {
-      title: '实验容量',
-      dataIndex: 'studentMax',
-      width: 100,
-      search: false,
-    },
-    {
-      title: '备注',
-      dataIndex: 'description',
-      search: false,
-    },
-    {
-      title: '创建人',
-      dataIndex: 'createdByDesc',
-      width: 100,
-      search: false,
     },
     {
       title: '创建时间',
@@ -89,7 +60,7 @@ export default () => {
   const handleDelete = async () => {
     if (!selectedRowKeys?.length) return;
     openConfirm(`您确定删除${selectedRowKeys.length}条记录吗`, async () => {
-      await deleteLab(selectedRowKeys);
+      await deleteSemester(selectedRowKeys);
       refAction.current?.reload();
     });
   };
@@ -97,7 +68,7 @@ export default () => {
 
   return (
     <PageContainer>
-      <ProTable<API.LabVO>
+      <ProTable<API.SemesterVO>
         actionRef={refAction}
         rowKey="id"
         request={async (params = {}, sort) => {
@@ -106,14 +77,14 @@ export default () => {
             orderBy: orderBy(sort),
           };
           setSearchProps(props);
-          return convertPageData(await listLab(props));
+          return convertPageData(await listSemester(props));
         }}
         toolBarRender={() => [
           <Button
             type="primary"
             key="primary"
             onClick={() => {
-              setLab(undefined);
+              setSemester(undefined);
               setVisible(true);
             }}
           >
@@ -137,7 +108,7 @@ export default () => {
         }}
       />
       <InputDialog
-        detailData={lab}
+        detailData={semester}
         onClose={(result) => {
           setVisible(false);
           result && refAction.current?.reload();

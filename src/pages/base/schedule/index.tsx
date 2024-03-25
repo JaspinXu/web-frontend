@@ -1,25 +1,25 @@
-import { deleteLab, listLab } from '@/services/api/lab';
+import { deleteSchedule, listSchedule } from '@/services/api/schedule';
 import { convertPageData, orderBy, waitTime } from '@/utils/request';
 import { openConfirm } from '@/utils/ui';
 import { PlusOutlined, DeleteOutlined, ExportOutlined } from '@ant-design/icons';
 import { ActionType, PageContainer, ProColumns, ProTable } from '@ant-design/pro-components';
 import { Button } from 'antd';
 import { useRef, useState } from 'react';
+import InputDialog from './InputDialog';
 import { downloadFile } from '@/utils/download-utils';
 import { Link } from '@umijs/max';
-import InputDialog from './InputDialog';
 
 export default () => {
   const refAction = useRef<ActionType>(null);
   const [selectedRowKeys, selectRow] = useState<number[]>([]);
   const [importVisible, setImportVisible] = useState(false);
-  const [lab, setLab] = useState<API.LabVO>();
-  const [searchProps, setSearchProps] = useState<API.LabQueryDTO>({});
+  const [schedule, setSchedule] = useState<API.ScheduleVO>();
+  const [searchProps, setSearchProps] = useState<API.ScheduleQueryDTO>({});
   const [visible, setVisible] = useState(false);
   const [downloading, setDownloading] = useState(false);
-  const columns: ProColumns<API.LabVO>[] = [
+  const columns: ProColumns<API.ScheduleVO>[] = [
     {
-      title: '实验室ID',
+      title: '实验安排ID',
       dataIndex: 'id',
       width: 100,
       search: false,
@@ -32,7 +32,7 @@ export default () => {
         return (
           <a
             onClick={() => {
-              setLab(record);
+              setSchedule(record);
               setVisible(true);
             }}
           >
@@ -42,22 +42,52 @@ export default () => {
       },
     },
     {
-      title: '实验室编码',
-      dataIndex: 'labCode',
+      title: '课程名称',
+      dataIndex: 'courseName',
       width: 100,
       search: false,
     },
     {
-      title: '占据状态',
-      dataIndex: 'occupy',
-      width: 100,
-      search: false,
+        title: '教师名称',
+        dataIndex: 'teacherName',
+        width: 100,
+        search: false,
     },
     {
-      title: '实验容量',
-      dataIndex: 'studentMax',
-      width: 100,
-      search: false,
+        title: '节次',
+        dataIndex: 'courseTime',
+        width: 100,
+        search: false,
+    },
+    {
+        title: '周次',
+        dataIndex: 'courseWeek',
+        width: 100,
+        search: false,
+    },
+    {
+        title: '星期',
+        dataIndex: 'courseDay',
+        width: 100,
+        search: false,
+    },
+    {
+        title: '学期名',
+        dataIndex: 'semesterName',
+        width: 100,
+        search: false,
+    },
+    {
+        title: '学生人数',
+        dataIndex: 'studentNum',
+        width: 100,
+        search: false,
+    },
+    {
+        title: '联系电话',
+        dataIndex: 'contactPhone',
+        width: 100,
+        search: false,
     },
     {
       title: '备注',
@@ -89,15 +119,21 @@ export default () => {
   const handleDelete = async () => {
     if (!selectedRowKeys?.length) return;
     openConfirm(`您确定删除${selectedRowKeys.length}条记录吗`, async () => {
-      await deleteLab(selectedRowKeys);
+      await deleteSchedule(selectedRowKeys);
       refAction.current?.reload();
     });
   };
 
+  const handleExport = () => {
+    setDownloading(true);
+    downloadFile(`/api/schedule/exportSchedule`, searchProps, '实验安排导出表.xls').then(() => {
+      waitTime(1000).then(() => setDownloading(false));
+    });
+  };
 
   return (
     <PageContainer>
-      <ProTable<API.LabVO>
+      <ProTable<API.ScheduleVO>
         actionRef={refAction}
         rowKey="id"
         request={async (params = {}, sort) => {
@@ -106,14 +142,14 @@ export default () => {
             orderBy: orderBy(sort),
           };
           setSearchProps(props);
-          return convertPageData(await listLab(props));
+          return convertPageData(await listSchedule(props));
         }}
         toolBarRender={() => [
           <Button
             type="primary"
             key="primary"
             onClick={() => {
-              setLab(undefined);
+              setSchedule(undefined);
               setVisible(true);
             }}
           >
@@ -128,6 +164,9 @@ export default () => {
           >
             <DeleteOutlined onPointerEnterCapture={undefined} onPointerLeaveCapture={undefined} /> 删除
           </Button>,
+          <Button type="default" onClick={handleExport} loading={downloading}>
+            <ExportOutlined onPointerEnterCapture={undefined} onPointerLeaveCapture={undefined} /> 导出
+          </Button>,
         ]}
         columns={columns}
         rowSelection={{
@@ -137,8 +176,8 @@ export default () => {
         }}
       />
       <InputDialog
-        detailData={lab}
-        onClose={(result) => {
+        detailData={schedule}
+        onClose={(result: any) => {
           setVisible(false);
           result && refAction.current?.reload();
         }}
@@ -147,5 +186,3 @@ export default () => {
     </PageContainer>
   );
 };
-
-
