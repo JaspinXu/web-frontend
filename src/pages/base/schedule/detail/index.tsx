@@ -4,6 +4,7 @@ import { history, useSearchParams } from '@umijs/max';
 import { message } from 'antd';
 import { useEffect, useState, useRef } from 'react';
 
+
 export default () => {
   const [searchParams] = useSearchParams();
   const form = useRef<ProFormInstance>(null);
@@ -19,7 +20,7 @@ export default () => {
   const onFinish = async (values: any) => {
     const { labName, courseName, teacherName, courseTime, courseWeek, courseDay, semesterName, studentNum, contactPhone, description, } = values;
     const data: API.ScheduleDTO = {
-      id, labName, courseName, teacherName, courseTime, courseWeek, courseDay, semesterName, studentNum, contactPhone, description,
+      id, labName, courseName, teacherName, courseTime, courseWeek, courseDay, semesterName, studentNum, contactPhone, description, 
     };
 
     try {

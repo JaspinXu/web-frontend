@@ -89,23 +89,23 @@ export default () => {
         width: 100,
         search: false,
     },
-    {
-      title: '备注',
-      dataIndex: 'description',
-      search: false,
-    },
-    {
-      title: '创建人',
-      dataIndex: 'createdByDesc',
-      width: 100,
-      search: false,
-    },
-    {
-      title: '创建时间',
-      dataIndex: 'createdAt',
-      width: 150,
-      search: false,
-    },
+    // {
+    //   title: '备注',
+    //   dataIndex: 'description',
+    //   search: false,
+    // },
+    // {
+    //   title: '创建人',
+    //   dataIndex: 'createdByDesc',
+    //   width: 100,
+    //   search: false,
+    // },
+    // {
+    //   title: '创建时间',
+    //   dataIndex: 'createdAt',
+    //   width: 150,
+    //   search: false,
+    // },
     {
       title: '操作',
       width: 100,
@@ -153,7 +153,17 @@ export default () => {
               setVisible(true);
             }}
           >
-            <PlusOutlined onPointerEnterCapture={undefined} onPointerLeaveCapture={undefined} /> 新建
+            <PlusOutlined onPointerEnterCapture={undefined} onPointerLeaveCapture={undefined} /> 自动新建
+          </Button>,
+          <Button
+            type="primary"
+            key="primary"
+            onClick={() => {
+              setSchedule(undefined);
+              setVisible(true);
+            }}
+          >
+            <PlusOutlined onPointerEnterCapture={undefined} onPointerLeaveCapture={undefined} /> 手动新建
           </Button>,
           <Button
             type="primary"
