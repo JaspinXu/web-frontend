@@ -8,6 +8,7 @@ import { useRef, useState } from 'react';
 import InputDialog from './InputDialog';
 import { downloadFile } from '@/utils/download-utils';
 import { Link } from '@umijs/max';
+import { useNavigate } from 'react-router-dom';
 
 export default () => {
   const refAction = useRef<ActionType>(null);
@@ -17,6 +18,7 @@ export default () => {
   const [searchProps, setSearchProps] = useState<API.ScheduleQueryDTO>({});
   const [visible, setVisible] = useState(false);
   const [downloading, setDownloading] = useState(false);
+  const navigate = useNavigate()
   const columns: ProColumns<API.ScheduleVO>[] = [
     {
       title: '实验安排ID',
@@ -28,6 +30,7 @@ export default () => {
       title: '实验室名称',
       dataIndex: 'labName',
       width: 100,
+      search: false,
       render: (dom, record) => {
         return (
           <a
@@ -45,13 +48,11 @@ export default () => {
       title: '课程名称',
       dataIndex: 'courseName',
       width: 100,
-      search: false,
     },
     {
         title: '教师名称',
         dataIndex: 'teacherName',
         width: 100,
-        search: false,
     },
     {
         title: '节次',
@@ -145,16 +146,16 @@ export default () => {
           return convertPageData(await listSchedule(props));
         }}
         toolBarRender={() => [
-          <Button
-            type="primary"
-            key="primary"
-            onClick={() => {
-              setSchedule(undefined);
-              setVisible(true);
-            }}
-          >
-            <PlusOutlined onPointerEnterCapture={undefined} onPointerLeaveCapture={undefined} /> 自动新建
-          </Button>,
+          // <Button
+          //   type="primary"
+          //   key="primary"
+          //   onClick={() => {
+          //     navigate('\base\schedule\preset');
+          //   }}
+          // >
+          //   <PlusOutlined onPointerEnterCapture={undefined} onPointerLeaveCapture={undefined} /> 自动新建
+          // </Button>,
+          <Link to={`preset`}>自动新建</Link>,
           <Button
             type="primary"
             key="primary"

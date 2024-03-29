@@ -91,6 +91,13 @@ export default [
         component: './base/schedule/detail',
         access: 'hasPrivilege',
       },
+      {
+        path: '/base/schedule/preset',
+        name: 'schedulePreset',
+        hideInMenu: true,
+        component: './base/schedule/preset',
+        access: 'hasPrivilege',
+      },
     ],
   },
   {
