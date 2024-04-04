@@ -61,6 +61,7 @@ export default function InputDialog(props: InputDialogProps) {
       title={props.detailData ? '修改实验室' : '新建实验室'}
       open={props.visible}
     >
+      <ProForm.Group>
       <ProFormText
         name="labName"
         label="实验室名称"
@@ -71,7 +72,6 @@ export default function InputDialog(props: InputDialogProps) {
           },
         ]}
       />
-      <ProForm.Group>
       <ProFormText
           name="labCode"
           label="实验室编码"
@@ -82,6 +82,8 @@ export default function InputDialog(props: InputDialogProps) {
             },
           ]}
         />
+      </ProForm.Group>
+      <ProForm.Group>
         <ProFormText
           name="studentMax"
           label="实验容量"

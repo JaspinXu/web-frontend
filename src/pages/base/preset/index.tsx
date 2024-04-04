@@ -1,23 +1,19 @@
-import { addScheduleAuto, deleteSchedule, listFreeLab, listSchedule } from '@/services/api/schedule';
-import { convertPageData, orderBy, waitTime } from '@/utils/request';
+import { addScheduleAuto, listFreeLab, } from '@/services/api/schedule';
+import { convertPageData, } from '@/utils/request';
 import { openConfirm } from '@/utils/ui';
-import { PlusOutlined, DeleteOutlined, ExportOutlined } from '@ant-design/icons';
 import { ActionType, PageContainer, ProColumns, ProTable } from '@ant-design/pro-components';
-import { Modal, Button, Form, Input } from 'antd';
-import { isNull } from 'lodash';
+import { Button, Form, Input, Row, Col, Space, message, Card } from 'antd';
 import React,{ useRef, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
 
 export default () => {
   const refAction = useRef<ActionType>(null);
   const [selectedRowKeys, selectRow] = useState<number[]>([]);
-  const [importVisible, setImportVisible] = useState(false);
-  const [lab, setLab] = useState<API.LabVO>();
-  const [searchProps, setSearchProps] = useState<API.CheckQueryDTO>({});
-  const [searchParams, setSearchParams] = useState<API.CheckQueryDTO>({});
-  const [visible, setVisible] = useState(false);
-  const [downloading, setDownloading] = useState(false);
-  const navigate = useNavigate();
+  const defaultCheck: API.CheckQueryDTO ={
+      courseTime: "Xu",
+      courseWeek: "Zhao",
+      courseDay: "Bin",
+  };
+  const [searchParams, setSearchParams] = useState<API.CheckQueryDTO>(defaultCheck);
 
   const handleSearch = (newSearchParams: API.CheckQueryDTO) => {  
     setSearchParams(newSearchParams);  
@@ -37,18 +33,12 @@ export default () => {
     {
       title: '实验室名称',
       dataIndex: 'labName',
-      width: 100,
+      width: 200,
       search: false,
     },
     {
       title: '实验室编码',
       dataIndex: 'labCode',
-      width: 100,
-      search: false,
-    },
-    {
-      title: '占据状态',
-      dataIndex: 'occupy',
       width: 100,
       search: false,
     },
@@ -61,18 +51,6 @@ export default () => {
     {
       title: '备注',
       dataIndex: 'description',
-      search: false,
-    },
-    {
-      title: '创建人',
-      dataIndex: 'createdByDesc',
-      width: 100,
-      search: false,
-    },
-    {
-      title: '创建时间',
-      dataIndex: 'createdAt',
-      width: 150,
       search: false,
     },
   ];
@@ -88,20 +66,46 @@ export default () => {
       queryDTO: searchParams, 
       keysDTO: searchKeys,
     }
-      await addScheduleAuto(saveProps);
+    try {
+        await addScheduleAuto(saveProps, { throwError: true });
+    } catch (ex) {}
+    message.success('保存成功,请前往实验安排管理部分查看!');
     });
   };
 
 
   return (
     <PageContainer>
-      <Form onFinish={handleSearch}>  
+    <Card style={{  
+      marginBottom: 20,
+    }}>
+      <Form  onFinish={handleSearch}>  
+      <Row>
+      <Col>
+      <Space size={20}>
       <Form.Item name="courseName" label="课程名称">  
         <Input />  
-      </Form.Item>  
+      </Form.Item> 
       <Form.Item name="teacherName" label="教师名称">  
         <Input />  
       </Form.Item>
+      <Form.Item name="studentNum" label="学生人数">  
+        <Input />  
+      </Form.Item>
+      <Form.Item name="contactPhone" label="联系电话">  
+        <Input />  
+      </Form.Item>
+      </Space> 
+      </Col>
+      </Row>
+      <Row>
+      <Space size={28}>
+      <Form.Item>
+      </Form.Item>
+      <Form.Item>
+      </Form.Item>
+      </Space>
+      <Space size={48}>
       <Form.Item name="courseTime" label="节次">  
         <Input />  
       </Form.Item>
@@ -111,23 +115,36 @@ export default () => {
       <Form.Item name="courseDay" label="星期">  
         <Input />  
       </Form.Item>
-      <Form.Item name="studentNum" label="学生人数">  
+      <Form.Item name="description" label="备注">  
         <Input />  
       </Form.Item>
-      <Form.Item name="contactPhone" label="联系电话">  
-        <Input />  
+      </Space>
+      <Space size={926}>
+      <Form.Item>
+      </Form.Item>
+      <Form.Item>
+      </Form.Item>
+      </Space>
+      <Space size={10}>
+      <Form.Item>  
+        <Button danger type="default" htmlType="reset">  
+          重置  
+        </Button>  
       </Form.Item>
       <Form.Item>  
         <Button type="primary" htmlType="submit">  
           提交  
         </Button>  
-      </Form.Item>  
+      </Form.Item>
+      </Space>
+      </Row> 
     </Form>
+    </Card>
       <ProTable<API.LabVO>
         actionRef={refAction}
         rowKey="id"
         pagination={{
-          defaultPageSize: 10,
+          defaultPageSize: 20,
         }}
         search={false}
         request={async (params) => {  

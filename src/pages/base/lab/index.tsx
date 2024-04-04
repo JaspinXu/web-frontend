@@ -1,22 +1,19 @@
 import { deleteLab, listLab } from '@/services/api/lab';
-import { convertPageData, orderBy, waitTime } from '@/utils/request';
+import { convertPageData, orderBy } from '@/utils/request';
 import { openConfirm } from '@/utils/ui';
 import { PlusOutlined, DeleteOutlined, ExportOutlined } from '@ant-design/icons';
 import { ActionType, PageContainer, ProColumns, ProTable } from '@ant-design/pro-components';
 import { Button } from 'antd';
 import { useRef, useState } from 'react';
-import { downloadFile } from '@/utils/download-utils';
 import { Link } from '@umijs/max';
 import InputDialog from './InputDialog';
 
 export default () => {
   const refAction = useRef<ActionType>(null);
   const [selectedRowKeys, selectRow] = useState<number[]>([]);
-  const [importVisible, setImportVisible] = useState(false);
   const [lab, setLab] = useState<API.LabVO>();
   const [searchProps, setSearchProps] = useState<API.LabQueryDTO>({});
   const [visible, setVisible] = useState(false);
-  const [downloading, setDownloading] = useState(false);
   const columns: ProColumns<API.LabVO>[] = [
     {
       title: '实验室ID',

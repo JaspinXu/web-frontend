@@ -2,7 +2,7 @@
  * @Author: JaspinXu sea.xuo@gmail.com
  * @Date: 2024-03-25 17:35:42
  * @LastEditors: JaspinXu sea.xuo@gmail.com
- * @LastEditTime: 2024-03-25 19:24:14
+ * @LastEditTime: 2024-04-04 13:39:33
  * @FilePath: \web-frontend\src\pages\base\semester\InputDialog\index.tsx
  * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
  */
@@ -55,7 +55,7 @@ export default function InputDialog(props: InputDialogProps) {
 
   return (
     <ModalForm
-      width={600}
+      width={450}
       onFinish={onFinish}
       formRef={form}
       modalProps={{
@@ -75,7 +75,6 @@ export default function InputDialog(props: InputDialogProps) {
           },
         ]}
       />
-      <ProFormText />
     </ModalForm>
   );
 }

@@ -34,69 +34,19 @@ export default () => {
   };
   return (
     <PageContainer>
-      <ProForm formRef={form} onFinish={(values) => onFinish(values)}>
-        <ProFormText
-          name="labName"
-          label="实验室名称"
-          rules={[
-            {
-              required: true,
-              message: '请输入实验室名称！',
-            },
-          ]}
-        />
-        <ProForm.Group>
-         <ProFormText
-          name="courseName"
-          label="课程名称"
-          rules={[
-            {
-              required: true,
-              message: '请输入课程名称！',
-            },
-          ]}
-         />
-         <ProFormText
-          name="teacherName"
-          label="教师名称"
-          rules={[
-            {
-              required: true,
-              message: '请输入教师名称！',
-            },
-          ]}
-         />
-         <ProFormText
-          name="courseTime"
-          label="节次"
-          rules={[
-            {
-              required: true,
-              message: '请输入节次！',
-            },
-          ]}
-         />
-         <ProFormText
-          name="courseWeek"
-          label="周次"
-          rules={[
-            {
-              required: true,
-              message: '请输入周次！',
-            },
-          ]}
-         />
-         <ProFormText
-          name="courseDay"
-          label="星期"
-          rules={[
-            {
-              required: true,
-              message: '请输入星期！',
-            },
-          ]}
-         />
-         <ProFormText
+    <ProForm formRef={form} onFinish={(values) => onFinish(values)}>
+    <ProForm.Group>
+      <ProFormText
+        name="labName"
+        label="实验室名称"
+        rules={[
+          {
+            required: true,
+            message: '请输入实验室名称！',
+          },
+        ]}
+      />
+      <ProFormText
           name="semesterName"
           label="学期名"
           rules={[
@@ -105,8 +55,8 @@ export default () => {
               message: '请输入学期名！',
             },
           ]}
-         />
-         <ProFormText
+      />
+      <ProFormText
           name="studentNum"
           label="学生人数"
           rules={[
@@ -115,8 +65,30 @@ export default () => {
               message: '请输入学生人数！',
             },
           ]}
-         />
-         <ProFormText
+      />
+    </ProForm.Group>
+    <ProForm.Group>
+      <ProFormText
+          name="courseName"
+          label="课程名称"
+          rules={[
+            {
+              required: true,
+              message: '请输入课程名称！',
+            },
+          ]}
+      />
+      <ProFormText
+          name="teacherName"
+          label="教师名称"
+          rules={[
+            {
+              required: true,
+              message: '请输入教师名称！',
+            },
+          ]}
+      />
+      <ProFormText
           name="contactPhone"
           label="联系电话"
           rules={[
@@ -125,10 +97,42 @@ export default () => {
               message: '请输入联系电话！',
             },
           ]}
-         />
-        </ProForm.Group>
-      <ProFormText name="description" label="备注" />
-      </ProForm>
+      />
+    </ProForm.Group>
+    <ProForm.Group>  
+      <ProFormText
+          name="courseTime"
+          label="节次"
+          rules={[
+            {
+              required: true,
+              message: '请输入节次！',
+            },
+          ]}
+      />
+      <ProFormText
+          name="courseWeek"
+          label="周次"
+          rules={[
+            {
+              required: true,
+              message: '请输入周次！',
+            },
+          ]}
+      />
+      <ProFormText
+          name="courseDay"
+          label="星期"
+          rules={[
+            {
+              required: true,
+              message: '请输入星期！',
+            },
+          ]}
+      />
+    </ProForm.Group>
+    <ProFormText name="description" label="备注" width={660}/>
+    </ProForm>
     </PageContainer>
   );
 };

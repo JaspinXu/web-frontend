@@ -3,22 +3,19 @@ import { convertPageData, orderBy, waitTime } from '@/utils/request';
 import { openConfirm } from '@/utils/ui';
 import { PlusOutlined, DeleteOutlined, ExportOutlined } from '@ant-design/icons';
 import { ActionType, PageContainer, ProColumns, ProTable } from '@ant-design/pro-components';
-import { Modal, Button, Form, Input } from 'antd';
+import { Button } from 'antd';
 import React,{ useRef, useState } from 'react';
 import InputDialog from './InputDialog';
 import { downloadFile } from '@/utils/download-utils';
 import { Link } from '@umijs/max';
-import { useNavigate } from 'react-router-dom';
 
 export default () => {
   const refAction = useRef<ActionType>(null);
   const [selectedRowKeys, selectRow] = useState<number[]>([]);
-  const [importVisible, setImportVisible] = useState(false);
   const [schedule, setSchedule] = useState<API.ScheduleVO>();
   const [searchProps, setSearchProps] = useState<API.ScheduleQueryDTO>({});
   const [visible, setVisible] = useState(false);
   const [downloading, setDownloading] = useState(false);
-  const navigate = useNavigate();
   const columns: ProColumns<API.ScheduleVO>[] = [
     {
       title: '实验安排ID',

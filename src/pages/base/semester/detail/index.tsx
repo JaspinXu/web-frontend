@@ -45,7 +45,6 @@ export default () => {
             },
           ]}
         />
-        <ProFormText />
       </ProForm>
     </PageContainer>
   );

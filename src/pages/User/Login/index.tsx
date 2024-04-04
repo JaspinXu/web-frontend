@@ -108,7 +108,7 @@ const Login: React.FC = () => {
             maxWidth: '75vw',
           }}
           logo={<img alt="logo" src="/logo.svg" />}
-          title="Ant Design"
+          title="实验室预约平台"
           subTitle={intl.formatMessage({ id: 'pages.layouts.userLayout.title' })}
           initialValues={{
             autoLogin: true,
@@ -121,7 +121,7 @@ const Login: React.FC = () => {
             name="username"
             fieldProps={{
               size: 'large',
-              prefix: <UserOutlined />,
+              prefix: <UserOutlined onPointerEnterCapture={undefined} onPointerLeaveCapture={undefined} />,
             }}
             placeholder={intl.formatMessage({
               id: 'pages.login.username.placeholder',
@@ -143,7 +143,7 @@ const Login: React.FC = () => {
             name="password"
             fieldProps={{
               size: 'large',
-              prefix: <LockOutlined />,
+              prefix: <LockOutlined onPointerEnterCapture={undefined} onPointerLeaveCapture={undefined} />,
             }}
             placeholder={intl.formatMessage({
               id: 'pages.login.password.placeholder',

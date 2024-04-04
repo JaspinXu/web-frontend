@@ -73,9 +73,9 @@ export default [
         access: 'hasPrivilege',
       },
       {
-        path: '/base/freeLab',
-        name: 'freeLab',
-        component: './base/freeLab',
+        path: '/base/preset',
+        name: 'preset',
+        component: './base/preset',
         access: 'hasPrivilege',
       },
     ],

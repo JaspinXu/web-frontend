@@ -10,7 +10,7 @@ import React from 'react';
  */
 const InfoCard: React.FC<{
   title: string;
-  index: number;
+  index: string;
   desc: string;
   href: string;
 }> = ({ title, href, index, desc }) => {
@@ -28,7 +28,7 @@ const InfoCard: React.FC<{
         color: token.colorTextSecondary,
         lineHeight: '22px',
         padding: '16px 19px',
-        minWidth: '220px',
+        maxWidth: '345px',
         flex: 1,
       }}
     >
@@ -43,14 +43,14 @@ const InfoCard: React.FC<{
           style={{
             width: 48,
             height: 48,
-            lineHeight: '22px',
-            backgroundSize: '100%',
+            lineHeight: '20px',
+            backgroundSize: '90%',
             textAlign: 'center',
             padding: '8px 16px 16px 12px',
             color: '#FFF',
             fontWeight: 'bold',
             backgroundImage:
-              "url('https://gw.alipayobjects.com/zos/bmw-prod/daaf8d50-8e6d-4251-905d-676a24ddfa12.svg')",
+              "url('https://img1.fjdaily.com/app/images/2023-04/25/faeb7a3c-547b-4434-99b1-3a9d83e09ce4.png.2')",
           }}
         >
           {index}
@@ -77,7 +77,7 @@ const InfoCard: React.FC<{
         {desc}
       </div>
       <a href={href} target="_blank" rel="noreferrer">
-        了解更多 {'>'}
+        To More {'>'}
       </a>
     </div>
   );
@@ -91,30 +91,27 @@ const Welcome: React.FC = () => {
       <Card
         style={{
           borderRadius: 8,
+          marginBottom: 5,
         }}
-        bodyStyle={{
-          backgroundImage:
-            initialState?.settings?.navTheme === 'realDark'
-              ? 'background-image: linear-gradient(75deg, #1A1B1F 0%, #191C1F 100%)'
-              : 'background-image: linear-gradient(75deg, #FBFDFF 0%, #F5F7FF 100%)',
-        }}
+        
       >
         <div
           style={{
-            backgroundPosition: '100% -30%',
+            backgroundPosition: '100% 0%',
             backgroundRepeat: 'no-repeat',
-            backgroundSize: '274px auto',
+            backgroundSize: '320px auto',
             backgroundImage:
-              "url('https://gw.alipayobjects.com/mdn/rms_a9745b/afts/img/A*BuFmQqsB2iAAAAAAAAAAAAAAARQnAQ')",
+              "url('http://www.qdsyzx.sdu.edu.cn/__local/E/A0/E8/121FFCFE5AD3EFFEA9A5997C429_588A0D72_3B14E.png')",
           }}
         >
           <div
             style={{
               fontSize: '20px',
               color: token.colorTextHeading,
+              fontStyle: "oblique",
             }}
           >
-            欢迎使用 Ant Design Pro
+          K2公共（创新）实验教学中心概况  
           </div>
           <p
             style={{
@@ -123,13 +120,27 @@ const Welcome: React.FC = () => {
               lineHeight: '22px',
               marginTop: 16,
               marginBottom: 32,
-              width: '65%',
+              width: '68%',
             }}
           >
-            Ant Design Pro 是一个整合了 umi，Ant Design 和 ProComponents
-            的脚手架方案。致力于在设计规范和基础组件的基础上，继续向上构建，提炼出典型模板/业务组件/配套设计资源，进一步提升企业级中后台产品设计研发过程中的『用户』和『设计者』的体验。
+            山东大学青岛校区公共（创新）实验教学中心实验室空间资源为1.498万平方米（总建筑面积），中心已建好现代教学平台1554平米，微机、语音室共625个机位；工程教育平台661平米，设有电工基础实验室、数电、模电实验室、电工实训实验室、人工智能创新实验室、物联网应用实验室；基础化学公共平台1219平米,设有物理化学实验室、有机化学实验室、无机与分析化学实验室；物理公共平台803平米，设有基础光学实验室、大学物理实验室;创新实践实训平台3354平米，开设无人机、3D打印、陶艺、先进制造技术及虚拟仿真、虚拟仿真机器人、VR/AR、人工智能、虚拟现实、增强现实等开放式实践课程。
           </p>
-          <div
+        </div>
+      </Card>
+      <Card
+        style={{
+          borderRadius: 8,
+        }}
+      >
+        <div
+             style={{
+              backgroundPosition: '100% 50%',
+              backgroundRepeat: 'no-repeat',
+              backgroundSize: '750px auto',
+              backgroundImage:
+                "url('http://www.qdsyzx.sdu.edu.cn/__local/3/DD/DA/C0EAAB326A17CAB50B8553AC9D0_2999DE8F_14052.png')",
+            }}>
+        <div
             style={{
               display: 'flex',
               flexWrap: 'wrap',
@@ -137,25 +148,13 @@ const Welcome: React.FC = () => {
             }}
           >
             <InfoCard
-              index={1}
-              href="https://umijs.org/docs/introduce/introduce"
-              title="了解 umi"
-              desc="umi 是一个可扩展的企业级前端应用框架,umi 以路由为基础的，同时支持配置式路由和约定式路由，保证路由的功能完备，并以此进行功能扩展。"
-            />
-            <InfoCard
-              index={2}
-              title="了解 ant design"
-              href="https://ant.design"
-              desc="antd 是基于 Ant Design 设计体系的 React UI 组件库，主要用于研发企业级中后台产品。"
-            />
-            <InfoCard
-              index={3}
-              title="了解 Pro Components"
-              href="https://procomponents.ant.design"
-              desc="ProComponents 是一个基于 Ant Design 做了更高抽象的模板组件，以 一个组件就是一个页面为开发理念，为中后台开发带来更好的体验。"
+              index={""}
+              href="http://www.qdsyzx.sdu.edu.cn/"
+              title="公共（创新）实验教学中心"
+              desc="K2实验中心整合学校3个国家级实验教学示范中心和1个省级实验教学示范中心的资源，建立了五个跨学科、跨学院的公共、基础类实验平台：现代教育实验平台、工程教育实验平台、公共物理实验平台、公共化学实验平台、创新实践实训平台。其中包括13个计算机实验室，主要分布在二楼，如右图所示。"
             />
           </div>
-        </div>
+          </div>
       </Card>
     </PageContainer>
   );
