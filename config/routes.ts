@@ -34,25 +34,6 @@ export default [
     icon: 'appstore',
     routes: [
       {
-        path: '/base/department',
-        name: 'department',
-        component: './base/department',
-        access: 'hasPrivilege',
-      },
-      {
-        path: '/base/department/detail',
-        name: 'departmentDetail',
-        hideInMenu: true,
-        component: './base/department/detail',
-        access: 'hasPrivilege',
-      },
-      {
-        path: '/base/charts',
-        name: 'charts',
-        component: './base/charts',
-        access: 'hasPrivilege',
-      },
-      {
         path: '/base/lab',
         name: 'lab',
         component: './base/lab',
