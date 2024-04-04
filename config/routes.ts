@@ -92,10 +92,9 @@ export default [
         access: 'hasPrivilege',
       },
       {
-        path: '/base/schedule/preset',
-        name: 'schedulePreset',
-        hideInMenu: true,
-        component: './base/schedule/preset',
+        path: '/base/freeLab',
+        name: 'freeLab',
+        component: './base/freeLab',
         access: 'hasPrivilege',
       },
     ],

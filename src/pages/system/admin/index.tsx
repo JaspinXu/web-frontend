@@ -37,7 +37,6 @@ export default () => {
       fixed: true,
       width: 100,
       search: false,
-      tip: '用户ID唯一',
       render: (dom, record) => {
         return (
           <a
@@ -174,7 +173,7 @@ export default () => {
               setVisible(true);
             }}
           >
-            <PlusOutlined /> 新建
+            <PlusOutlined onPointerEnterCapture={undefined} onPointerLeaveCapture={undefined} /> 新建
           </Button>,
         ]}
         columns={columns}

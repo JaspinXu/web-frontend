@@ -3,8 +3,8 @@ import { convertPageData, orderBy, waitTime } from '@/utils/request';
 import { openConfirm } from '@/utils/ui';
 import { PlusOutlined, DeleteOutlined, ExportOutlined } from '@ant-design/icons';
 import { ActionType, PageContainer, ProColumns, ProTable } from '@ant-design/pro-components';
-import { Button } from 'antd';
-import { useRef, useState } from 'react';
+import { Modal, Button, Form, Input } from 'antd';
+import React,{ useRef, useState } from 'react';
 import InputDialog from './InputDialog';
 import { downloadFile } from '@/utils/download-utils';
 import { Link } from '@umijs/max';
@@ -18,7 +18,7 @@ export default () => {
   const [searchProps, setSearchProps] = useState<API.ScheduleQueryDTO>({});
   const [visible, setVisible] = useState(false);
   const [downloading, setDownloading] = useState(false);
-  const navigate = useNavigate()
+  const navigate = useNavigate();
   const columns: ProColumns<API.ScheduleVO>[] = [
     {
       title: '实验安排ID',
@@ -31,18 +31,6 @@ export default () => {
       dataIndex: 'labName',
       width: 100,
       search: false,
-      render: (dom, record) => {
-        return (
-          <a
-            onClick={() => {
-              setSchedule(record);
-              setVisible(true);
-            }}
-          >
-            {dom}
-          </a>
-        );
-      },
     },
     {
       title: '课程名称',
@@ -90,23 +78,6 @@ export default () => {
         width: 100,
         search: false,
     },
-    // {
-    //   title: '备注',
-    //   dataIndex: 'description',
-    //   search: false,
-    // },
-    // {
-    //   title: '创建人',
-    //   dataIndex: 'createdByDesc',
-    //   width: 100,
-    //   search: false,
-    // },
-    // {
-    //   title: '创建时间',
-    //   dataIndex: 'createdAt',
-    //   width: 150,
-    //   search: false,
-    // },
     {
       title: '操作',
       width: 100,
@@ -137,6 +108,12 @@ export default () => {
       <ProTable<API.ScheduleVO>
         actionRef={refAction}
         rowKey="id"
+        pagination={{
+          defaultPageSize: 10,
+        }}
+        search={{
+          labelWidth: 120,
+        }}
         request={async (params = {}, sort) => {
           const props = {
             ...params,
@@ -146,16 +123,6 @@ export default () => {
           return convertPageData(await listSchedule(props));
         }}
         toolBarRender={() => [
-          // <Button
-          //   type="primary"
-          //   key="primary"
-          //   onClick={() => {
-          //     navigate('\base\schedule\preset');
-          //   }}
-          // >
-          //   <PlusOutlined onPointerEnterCapture={undefined} onPointerLeaveCapture={undefined} /> 自动新建
-          // </Button>,
-          <Link to={`preset`}>自动新建</Link>,
           <Button
             type="primary"
             key="primary"

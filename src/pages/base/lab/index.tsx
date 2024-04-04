@@ -100,6 +100,13 @@ export default () => {
       <ProTable<API.LabVO>
         actionRef={refAction}
         rowKey="id"
+        pagination={{
+          defaultPageSize: 10,
+        }}
+        search={{
+          labelWidth: 120,
+        }}
+        scroll={{ x: 100 }}
         request={async (params = {}, sort) => {
           const props = {
             ...params,

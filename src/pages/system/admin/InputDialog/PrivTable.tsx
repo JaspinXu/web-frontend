@@ -110,7 +110,7 @@ export default React.forwardRef<PrivTableRef, PrivTableProps>((props: PrivTableP
       dataIndex: 'folder',
       render: (v: string) => (
         <span>
-          <WindowsFilled style={{ marginRight: 2, color: 'green' }} />
+          <WindowsFilled style={{ marginRight: 2, color: 'green' }} onPointerEnterCapture={undefined} onPointerLeaveCapture={undefined} />
           {v}
         </span>
       ),

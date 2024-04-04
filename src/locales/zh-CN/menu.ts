@@ -23,7 +23,7 @@ export default {
   'menu.base.semesterDetail': '学期详情',
   'menu.base.schedule': '实验安排管理',
   'menu.base.scheduleDetail': '实验安排详情',
-  'menu.base.schedulePreset': '预置安排',
+  'menu.base.freeLab': '可用实验室',
   'menu.base.charts': '图标示例',
   'menu.login': '登录',
   'menu.register': '注册',
