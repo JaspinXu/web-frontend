@@ -119,13 +119,18 @@ export default () => {
         <Input />  
       </Form.Item>
       </Space>
-      <Space size={926}>
+      <Space size={573}>
       <Form.Item>
       </Form.Item>
       <Form.Item>
       </Form.Item>
       </Space>
       <Space size={10}>
+      <Form.Item>  
+        <Button type="text" style={{ fontFamily: 'Trebuchet MS, Noto Sans CJK SC, Arial' ,fontWeight:"bold"}}>  
+          Hint:节次周次星期请逐个输入且以半角逗号分隔！ 
+        </Button>  
+      </Form.Item>
       <Form.Item>  
         <Button danger type="default" htmlType="reset">  
           重置  

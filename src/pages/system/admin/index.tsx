@@ -7,7 +7,7 @@
 import { ActionType, PageContainer, ProColumns, ProTable } from '@ant-design/pro-components';
 import { Button, Input, message, Space } from 'antd';
 import React, { useRef, useState } from 'react';
-import { PlusOutlined } from '@ant-design/icons';
+import { FacebookOutlined, PlusOutlined } from '@ant-design/icons';
 import { listAdmin, deleteAdmin } from '@/services/api/admin';
 import { convertPageData } from '@/utils/request';
 import InputDialog from './InputDialog';

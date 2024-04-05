@@ -98,7 +98,7 @@ export default () => {
         actionRef={refAction}
         rowKey="id"
         pagination={{
-          defaultPageSize: 10,
+          defaultPageSize: 5,
         }}
         search={{
           labelWidth: 120,

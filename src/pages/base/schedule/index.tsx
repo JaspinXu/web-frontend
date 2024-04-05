@@ -18,31 +18,31 @@ export default () => {
   const [downloading, setDownloading] = useState(false);
   const columns: ProColumns<API.ScheduleVO>[] = [
     {
-      title: '实验安排ID',
+      title: 'ID',
       dataIndex: 'id',
-      width: 100,
+      width: 50,
       search: false,
     },
     {
-      title: '实验室名称',
+      title: '实验室',
       dataIndex: 'labName',
       width: 100,
       search: false,
     },
     {
-      title: '课程名称',
+      title: '课程',
       dataIndex: 'courseName',
-      width: 100,
+      width: 150,
     },
     {
-        title: '教师名称',
+        title: '教师',
         dataIndex: 'teacherName',
         width: 100,
     },
     {
         title: '节次',
         dataIndex: 'courseTime',
-        width: 100,
+        width: 80,
         search: false,
     },
     {
@@ -54,30 +54,30 @@ export default () => {
     {
         title: '星期',
         dataIndex: 'courseDay',
-        width: 100,
+        width: 50,
         search: false,
     },
     {
-        title: '学期名',
+        title: '学期',
         dataIndex: 'semesterName',
-        width: 100,
+        width: 60,
         search: false,
     },
     {
-        title: '学生人数',
+        title: '人数',
         dataIndex: 'studentNum',
-        width: 100,
+        width: 50,
         search: false,
     },
     {
-        title: '联系电话',
+        title: '电话',
         dataIndex: 'contactPhone',
         width: 100,
         search: false,
     },
     {
       title: '操作',
-      width: 100,
+      width: 50,
       fixed: 'right',
       dataIndex: 'option',
       valueType: 'option',
@@ -128,7 +128,7 @@ export default () => {
               setVisible(true);
             }}
           >
-            <PlusOutlined onPointerEnterCapture={undefined} onPointerLeaveCapture={undefined} /> 手动新建
+            <PlusOutlined onPointerEnterCapture={undefined} onPointerLeaveCapture={undefined} /> 非校验手动新建
           </Button>,
           <Button
             type="primary"

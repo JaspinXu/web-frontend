@@ -68,6 +68,9 @@ export default () => {
       <ProTable<API.SemesterVO>
         actionRef={refAction}
         rowKey="id"
+        pagination={{
+          defaultPageSize: 5,
+        }}
         request={async (params = {}, sort) => {
           const props = {
             ...params,

@@ -1,6 +1,6 @@
 import { PageContainer } from '@ant-design/pro-components';
-import { useModel } from '@umijs/max';
-import { Card, theme } from 'antd';
+import { Link, useModel } from '@umijs/max';
+import { Card, Space, theme } from 'antd';
 import React from 'react';
 
 /**
@@ -119,12 +119,20 @@ const Welcome: React.FC = () => {
               color: token.colorTextSecondary,
               lineHeight: '22px',
               marginTop: 16,
-              marginBottom: 32,
+              marginBottom: 10,
               width: '68%',
             }}
           >
             山东大学青岛校区公共（创新）实验教学中心实验室空间资源为1.498万平方米（总建筑面积），中心已建好现代教学平台1554平米，微机、语音室共625个机位；工程教育平台661平米，设有电工基础实验室、数电、模电实验室、电工实训实验室、人工智能创新实验室、物联网应用实验室；基础化学公共平台1219平米,设有物理化学实验室、有机化学实验室、无机与分析化学实验室；物理公共平台803平米，设有基础光学实验室、大学物理实验室;创新实践实训平台3354平米，开设无人机、3D打印、陶艺、先进制造技术及虚拟仿真、虚拟仿真机器人、VR/AR、人工智能、虚拟现实、增强现实等开放式实践课程。
           </p>
+          <Space size={20}>
+          <a href={"https://github.com/JaspinXu/web-backend"} target="_blank" rel="noreferrer">
+          本平台Github后端代码 {'>'}
+          </a>
+          <a href={"https://github.com/JaspinXu/web-frontend"} target="_blank" rel="noreferrer">
+          本平台Github前端代码 {'>'}
+          </a>
+          </Space>
         </div>
       </Card>
       <Card
