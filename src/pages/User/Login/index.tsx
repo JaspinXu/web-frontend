@@ -3,11 +3,12 @@ import { LockOutlined, UserOutlined } from '@ant-design/icons';
 import { LoginForm, ProFormCheckbox, ProFormText } from '@ant-design/pro-components';
 import { useEmotionCss } from '@ant-design/use-emotion-css';
 import { FormattedMessage, history, SelectLang, useIntl, useModel, Helmet } from '@umijs/max';
-import { message } from 'antd';
+import { Card, message } from 'antd';
 import Settings from '../../../../config/defaultSettings';
 import React from 'react';
 import { flushSync } from 'react-dom';
 import { login } from '@/services/api/authentication';
+import { color } from 'echarts';
 
 const Lang = () => {
   const langClassName = useEmotionCss(({ token }) => {
@@ -41,7 +42,8 @@ const Login: React.FC = () => {
       height: '100vh',
       overflow: 'auto',
       backgroundImage:
-        "url('https://mdn.alipayobjects.com/yuyan_qk0oxh/afts/img/V-_oS6r-i7wAAAAAAAAAAAAAFl94AQBr')",
+        // "url('https://mdn.alipayobjects.com/yuyan_qk0oxh/afts/img/V-_oS6r-i7wAAAAAAAAAAAAAFl94AQBr')",
+        "url('https://ts1.cn.mm.bing.net/th/id/R-C.4d605dc9d449a04b0feaf77caa10d729?rik=jpRUQcOqTEFLhg&riu=http%3a%2f%2fwww.cshuiwei.com%2fwp-content%2fuploads%2f2019%2f10%2faltair-hpc.jpg&ehk=HvXt56w3agoodssZEp%2bn%2bTZYMVh3kzs0VwjsZ6h5OnE%3d&risl=&pid=ImgRaw&r=0')",
       backgroundSize: '100% 100%',
     };
   });
@@ -125,7 +127,7 @@ const Login: React.FC = () => {
             }}
             placeholder={intl.formatMessage({
               id: 'pages.login.username.placeholder',
-              defaultMessage: '用户名: admin or user',
+              defaultMessage: '用户名: ',
             })}
             rules={[
               {
@@ -147,7 +149,7 @@ const Login: React.FC = () => {
             }}
             placeholder={intl.formatMessage({
               id: 'pages.login.password.placeholder',
-              defaultMessage: '密码: ant.design',
+              defaultMessage: '密码: ',
             })}
             rules={[
               {

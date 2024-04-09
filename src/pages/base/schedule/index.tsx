@@ -27,17 +27,18 @@ export default () => {
       title: '实验室',
       dataIndex: 'labName',
       width: 100,
-      search: false,
     },
     {
       title: '课程',
       dataIndex: 'courseName',
       width: 150,
+      search:false,
     },
     {
         title: '教师',
         dataIndex: 'teacherName',
         width: 100,
+        search:false,
     },
     {
         title: '节次',

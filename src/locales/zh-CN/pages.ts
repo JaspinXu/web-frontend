@@ -1,12 +1,20 @@
+/*
+ * @Author: JaspinXu sea.xuo@gmail.com
+ * @Date: 2024-03-17 12:21:41
+ * @LastEditors: JaspinXu sea.xuo@gmail.com
+ * @LastEditTime: 2024-04-09 15:33:43
+ * @FilePath: \web-frontend\src\locales\zh-CN\pages.ts
+ * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
+ */
 export default {
-  'pages.layouts.userLayout.title': 'Ant Design 是西湖区最具影响力的 Web 设计规范',
+  'pages.layouts.userLayout.title': '专为K2实验中心管理员设计的实验安排程序',
   'pages.login.accountLogin.tab': '账户密码登录',
-  'pages.login.accountLogin.errorMessage': '错误的用户名和密码(admin/ant.design)',
+  'pages.login.accountLogin.errorMessage': '错误的用户名和密码(admin/1)',
   'pages.login.failure': '登录失败，请重试！',
   'pages.login.success': '登录成功！',
-  'pages.login.username.placeholder': '用户名: admin or user',
+  'pages.login.username.placeholder': '用户名: ',
   'pages.login.username.required': '用户名是必填项！',
-  'pages.login.password.placeholder': '密码: ant.design',
+  'pages.login.password.placeholder': '密码: ',
   'pages.login.password.required': '密码是必填项！',
   'pages.login.phoneLogin.tab': '手机号登录',
   'pages.login.phoneLogin.errorMessage': '验证码错误',

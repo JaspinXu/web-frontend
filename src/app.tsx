@@ -111,7 +111,7 @@ export const layout: RunTimeLayoutConfig = ({ initialState, setInitialState }) =
       ? [
           <a key="openapi" href="http://localhost:9311/swagger-ui.html" target="_blank">
             <LinkOutlined />
-            <span>OpenAPI 文档</span>
+            <span>OpenAPI 接口页面</span>
           </a>,
         ]
       : [],
