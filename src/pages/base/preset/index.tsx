@@ -3,6 +3,7 @@ import { convertPageData, } from '@/utils/request';
 import { openConfirm } from '@/utils/ui';
 import { ActionType, PageContainer, ProColumns, ProTable } from '@ant-design/pro-components';
 import { Button, Form, Input, Row, Col, Space, message, Card } from 'antd';
+import { isEmpty } from 'lodash';
 import React,{ useRef, useState } from 'react';
 
 export default () => {
@@ -15,11 +16,11 @@ export default () => {
   };
   const [searchParams, setSearchParams] = useState<API.CheckQueryDTO>(defaultCheck);
 
-  const handleSearch = (newSearchParams: API.CheckQueryDTO) => {  
+  const handleSearch = (newSearchParams: API.CheckQueryDTO) => { 
     setSearchParams(newSearchParams);  
     refAction.current?.reload();
   };
-  const fetchData = async (params: API.CheckQueryDTO) => {     
+  const fetchData = async (params: API.CheckQueryDTO) => {   
       const response = await listFreeLab(params);   
       return convertPageData(response); 
   };
@@ -82,17 +83,17 @@ export default () => {
       <Form  onFinish={handleSearch}>  
       <Row>
       <Col>
-      <Space size={20}>
-      <Form.Item name="courseName" label="课程名称">  
+      <Space size={5}>
+      <Form.Item name="courseName" label="课程名称" rules={[{ required: true, message: '请输入课程名称!' }]} >  
         <Input />  
       </Form.Item> 
-      <Form.Item name="teacherName" label="教师名称">  
+      <Form.Item name="teacherName" label="教师名称" rules={[{ required: true, message: '请输入教师名称!' }]}>  
         <Input />  
       </Form.Item>
-      <Form.Item name="studentNum" label="学生人数">  
+      <Form.Item name="studentNum" label="学生人数" rules={[{ required: true, message: '请输入学生人数!' }]}>  
         <Input />  
       </Form.Item>
-      <Form.Item name="contactPhone" label="联系电话">  
+      <Form.Item name="contactPhone" label="联系电话" rules={[{ required: true, message: '请输入联系电话!' }]}>  
         <Input />  
       </Form.Item>
       </Space> 
@@ -105,17 +106,17 @@ export default () => {
       <Form.Item>
       </Form.Item>
       </Space>
-      <Space size={48}>
-      <Form.Item name="courseTime" label="节次">  
+      <Space size={33}>
+      <Form.Item name="courseTime" label="节次" rules={[{ required: true, message: '请输入节次!' }]}>  
         <Input />  
       </Form.Item>
-      <Form.Item name="courseWeek" label="周次">  
+      <Form.Item name="courseWeek" label="周次" rules={[{ required: true, message: '请输入周次!' }]}>  
         <Input />  
       </Form.Item>
-      <Form.Item name="courseDay" label="星期">  
+      <Form.Item name="courseDay" label="星期" rules={[{ required: true, message: '请输入星期!' }]}>  
         <Input />  
       </Form.Item>
-      <Form.Item name="description" label="备注">  
+      <Form.Item name="description" label="备注" rules={[{ required: true, message: '请输入备注!' }]}>  
         <Input />  
       </Form.Item>
       </Space>
